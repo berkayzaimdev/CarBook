@@ -18,7 +18,7 @@ namespace CarBook.Application.Features.CQRS.Handlers.AboutHandlers
             _repository = repository;
         }
 
-        public async Task<List<GetAboutQueryResult>> HandleAsync()
+        public async Task<List<GetAboutQueryResult>> Handle()
         {
             var values = await _repository.GetAllAsync();
 
