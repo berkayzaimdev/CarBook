@@ -1,13 +1,12 @@
 using CarBook.Application.Features.CQRS.Handlers.AboutHandlers;
 using CarBook.Application.Features.CQRS.Handlers.BannerHandlers;
+using CarBook.Application.Features.CQRS.Handlers.BrandHandlers;
 using CarBook.Core.Interfaces;
 using CarBook.Persistence.Context;
 using CarBook.Persistence.Repositories;
 using System.Runtime.ConstrainedExecution;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<CarBookContext>();
@@ -25,13 +24,18 @@ builder.Services.AddScoped<CreateBannerCommandHandler>();
 builder.Services.AddScoped<UpdateBannerCommandHandler>();
 builder.Services.AddScoped<RemoveBannerCommandHandler>();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddScoped<GetBrandQueryHandler>();
+builder.Services.AddScoped<GetBrandByIdQueryHandler>();
+builder.Services.AddScoped<CreateBrandCommandHandler>();
+builder.Services.AddScoped<UpdateBrandCommandHandler>();
+builder.Services.AddScoped<RemoveBrandCommandHandler>();
+
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
