@@ -12,6 +12,8 @@ namespace CarBook.WebApi.Controllers
     public class FeaturesController : ControllerBase
     {
         private readonly IMediator _mediator;
+        // Mediator nesnesini DI ile dahil ettiğimizde, istediğimiz tüm handler'lara _mediator.Send(ilgili Query/Command) ile ulaşabiliyoruz.
+        // X query'sini XQueryHandler ile yönetiyorduk normalde. Mediator nesnesi ile _mediator.Send(X) dediğimizde otomatik olarak o Handler'a gidip Handle() metodunu çağırıyoruz
 
         public FeaturesController(IMediator mediator)
         {

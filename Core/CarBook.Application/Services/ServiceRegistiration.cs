@@ -13,6 +13,8 @@ namespace CarBook.Application.Services
         public static void AddApplicationService(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ServiceRegistiration).Assembly));
+            // Tüm Mediator handler'ları dahil etmek için statik sınıf kullandın ve AddApplicationService metodunu ekledik.
+            // builder.Services parametresine override yaptık bir nevi
         }
     }
 }
