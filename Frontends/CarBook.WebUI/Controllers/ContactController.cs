@@ -1,6 +1,8 @@
 ﻿using CarBook.Dto.CarDtos;
+using CarBook.Dto.ContactDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace CarBook.WebUI.Controllers
 {
@@ -13,15 +15,23 @@ namespace CarBook.WebUI.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Index(CreateContactDto createContactDto)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7160/api/Cars/GetCarWithBrand");
+            createContactDto.SendDate = DateTime.Now;
+            var jsonData = JsonConvert.SerializeObject(createContactDto);
+            StringContent stringContent = new StringContent(jsonData,Encoding.UTF8,"application/json"); // Türkçe karakterleri JSON formata doğru bir şekilde çevirebilmek için Encoding.UTF8 kullandık
+            var responseMessage = await client.PostAsync("https://localhost:7160/api/Contacts",stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultCarWithBrandDto>>(jsonData);
-                return View(values);
+                return RedirectToAction("Index","Home");
             }
             return View();
         }
