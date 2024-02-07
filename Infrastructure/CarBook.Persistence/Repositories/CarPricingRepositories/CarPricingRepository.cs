@@ -21,7 +21,12 @@ namespace CarBook.Persistence.Repositories.CarPricingRepositories
 
         public async Task<List<CarPricing>> GetCarPricingWithCarsAsync()
         {
-            return await _context.CarPricings.Include(x => x.Car).ThenInclude(y => y.Brand).Include(z => z.Pricing).ToListAsync();
+            return await _context.CarPricings
+                .Include(x => x.Car)            // Foreign Key ile Car verisini çek
+                .ThenInclude(y => y.Brand)      // Car'daki Foreign Key ile Brand verisini çek
+                .Include(z => z.Pricing)        // Foreign Key ile Pricing verisini çek
+                .Where(x => x.PricingID == 3)   // Sadece günlük fiyatlandırmaya ait verileri çektik
+                .ToListAsync();
         }
     }
 }
