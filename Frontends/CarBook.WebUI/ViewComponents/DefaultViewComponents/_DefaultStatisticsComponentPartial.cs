@@ -6,7 +6,7 @@ namespace CarBook.WebUI.ViewComponents.DefaultViewComponents
 {
     public class _DefaultStatisticsComponentPartial : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync()
+        public IViewComponentResult Invoke()
         {
             return View();
         }
