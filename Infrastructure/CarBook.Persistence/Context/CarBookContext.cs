@@ -12,7 +12,9 @@ namespace CarBook.Persistence.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=DESKTOP-EC025DF;" +
+            //EC025DF
+            //M1UE4EP
+            optionsBuilder.UseSqlServer("Server=DESKTOP-M1UE4EP;" +
                 "initial Catalog=CarBook;" +
                 "integrated Security=true;" +
                 "TrustServerCertificate=true;");
@@ -34,5 +36,7 @@ namespace CarBook.Persistence.Context
         public DbSet<Service> Services { get; set; }
         public DbSet<SocialMedia> SocialMedias { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
     }
 }
