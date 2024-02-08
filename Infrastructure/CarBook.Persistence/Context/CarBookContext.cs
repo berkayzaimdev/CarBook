@@ -14,7 +14,7 @@ namespace CarBook.Persistence.Context
         {
             //EC025DF
             //M1UE4EP
-            optionsBuilder.UseSqlServer("Server=DESKTOP-M1UE4EP;" +
+            optionsBuilder.UseSqlServer("Server=DESKTOP-EC025DF;" +
                 "initial Catalog=CarBook;" +
                 "integrated Security=true;" +
                 "TrustServerCertificate=true;");
