@@ -16,4 +16,11 @@
     <ProjectReference Include="..\CarBook.Domain\CarBook.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Mediator\Commands\TagCloudCommands\" />
+    <Folder Include="Features\Mediator\Handlers\TagCloudHandlers\" />
+    <Folder Include="Features\Mediator\Queries\TagCloudQueries\" />
+    <Folder Include="Features\Mediator\Results\TagCloudResults\" />
+  </ItemGroup>
+
 </Project>
