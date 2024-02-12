@@ -11,5 +11,7 @@ namespace CarBook.Application.Interfaces.BlogInterfaces
     {
         Task<List<Blog>> GetLast3BlogsWithAuthorAsync();
         Task<List<Blog>> GetAllBlogsWithAuthorAsync();
+        Task<List<Blog>> GetBlogByAuthorIdAsync(int id);
+
     }
 }
