@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CarBook.Dto.TagCloudDtos
 {
-    public class ResultGetByBlogIdTagCloudDto
+    public class ResultTagCloudByBlogIdDto
     {
         public int TagCloudID { get; set; }
         public string Title { get; set; }

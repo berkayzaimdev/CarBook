@@ -7,7 +7,7 @@
         <img src="@Model.CoverImageUrl" alt="" class="img-fluid">
     </p>
 
-    @await Component.InvokeAsync("_BlogDetailsTagCloudByBlogComponentPartial")
+    @await Component.InvokeAsync("_BlogDetailsTagCloudByBlogComponentPartial", new { id = ViewBag.blogid })
 
     @await Component.InvokeAsync("_BlogDetailsAuthorAboutComponentPartial")
 
