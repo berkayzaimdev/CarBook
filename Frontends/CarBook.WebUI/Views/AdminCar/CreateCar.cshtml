@@ -21,19 +21,40 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Marka</label>
                                 @Html.DropDownListFor(x => x.BrandID,(List<SelectListItem>)ViewBag.BrandValues, new {@class="form-control"})
-                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputModel">Model</label>
-                                <input type="text" class="form-control" id="exampleInputModel" />
+                                <input asp-for="Model" type="text" class="form-control" id="exampleInputModel" placeholder="Model girişi yapınız..." />
                             </div>
-                            <div class="form-group mb-3">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="checkmeout0">
-                                    <label class="custom-control-label" for="checkmeout0">Check me out !</label>
-                                </div>
+                            <div class="form-group">
+                                <label for="exampleInputCoverImage">Kapak Fotoğrafı</label>
+                                <input asp-for="CoverImageUrl" type="text" class="form-control" id="exampleInputCoverImage" placeholder="Kapak fotoğrafı linkini giriniz.." />
                             </div>
-                            <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                            <div class="form-group">
+                                <label for="exampleInputKm">Km</label>
+                                <input asp-for="Km" type="number" class="form-control" id="exampleInputKm" placeholder="Km girişi yapınız..." />
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputTransmission">Vites Türü</label>
+                                <input asp-for="Transmission" type="text" class="form-control" id="exampleInputTransmission" placeholder="Vites türü girişi yapınız..." />
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputSeat">Koltuk Sayısı</label>
+                                <input asp-for="Seat" type="number" class="form-control" id="exampleInputSeat" placeholder="Koltuk sayısı girişi yapınız..." />
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputLuggage">Bagaj Sayısı</label>
+                                <input asp-for="Luggage" type="number" class="form-control" id="exampleInputLuggage" placeholder="Bagaj sayısı girişi yapınız..." />
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputFuel">Yakıt Türü</label>
+                                <input asp-for="Fuel" type="text" class="form-control" id="exampleInputFuel" placeholder="Yakıt türü girişi yapınız..." />
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputBigImage">Büyük Kapak Fotoğrafı</label>
+                                <input asp-for="BigImageUrl" type="text" class="form-control" id="exampleInputBigImage" placeholder="Büyük kapak fotoğrafı linkini giriniz.." />
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Aracı Kaydet</button>
                         </form>
 
                     </div>
