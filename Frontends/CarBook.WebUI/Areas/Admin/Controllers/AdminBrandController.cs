@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
-namespace CarBook.WebUI.Controllers
+namespace CarBook.WebUI.Areas.Admin.Controllers
 {
+    [Route("Admin/AdminBrand")]
+    [Area("Admin")]
     public class AdminBrandController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
@@ -14,6 +16,7 @@ namespace CarBook.WebUI.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
+        [Route("Index")]
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
@@ -28,12 +31,14 @@ namespace CarBook.WebUI.Controllers
         }
 
         [HttpGet]
+        [Route("CreateBrand")]
         public async Task<IActionResult> CreateBrand()
         {
             return View();
         }
 
         [HttpPost]
+        [Route("CreateBrand")]
         public async Task<IActionResult> CreateBrand(CreateBrandDto createBrandDto)
         {
             var client = _httpClientFactory.CreateClient();
@@ -42,24 +47,25 @@ namespace CarBook.WebUI.Controllers
             var responseMessage = await client.PostAsync("https://localhost:7160/api/Brands", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "AdminBrand", new { area = "Admin" });
             }
             return View();
         }
 
-
+        [Route("RemoveBrand/{id}")]
         public async Task<IActionResult> RemoveBrand(int id)
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.DeleteAsync($"https://localhost:7160/api/Brands/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "AdminBrand", new { area = "Admin" });
             }
             return View();
         }
 
         [HttpGet]
+        [Route("UpdateBrand/{id}")]
         public async Task<IActionResult> UpdateBrand(int id)
         {
             var client = _httpClientFactory.CreateClient();
@@ -73,8 +79,8 @@ namespace CarBook.WebUI.Controllers
             return View();
         }
 
-
         [HttpPost]
+        [Route("UpdateBrand/{id}")]
         public async Task<IActionResult> UpdateBrand(UpdateBrandDto updateBrandDto)
         {
             var client = _httpClientFactory.CreateClient();
@@ -83,7 +89,7 @@ namespace CarBook.WebUI.Controllers
             var responseMessage = await client.PutAsync("https://localhost:7160/api/Brands", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "AdminBrand", new { area = "Admin" });
             }
             return View();
         }

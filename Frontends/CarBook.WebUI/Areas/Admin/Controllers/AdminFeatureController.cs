@@ -4,8 +4,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using System.Text;
 
-namespace CarBook.WebUI.Controllers
+namespace CarBook.WebUI.Areas.Admin.Controllers
 {
+    [Route("Admin/AdminFeature")]
+    [Area("Admin")]
     public class AdminFeatureController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
@@ -15,6 +17,7 @@ namespace CarBook.WebUI.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
+        [Route("Index")]
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
@@ -29,12 +32,14 @@ namespace CarBook.WebUI.Controllers
         }
 
         [HttpGet]
+        [Route("CreateFeature")]
         public async Task<IActionResult> CreateFeature()
         {
             return View();
         }
 
         [HttpPost]
+        [Route("CreateFeature")]
         public async Task<IActionResult> CreateFeature(CreateFeatureDto createFeatureDto)
         {
             var client = _httpClientFactory.CreateClient();
@@ -43,24 +48,25 @@ namespace CarBook.WebUI.Controllers
             var responseMessage = await client.PostAsync("https://localhost:7160/api/Features", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "AdminFeature", new { area = "Admin" });
             }
             return View();
         }
 
-
+        [Route("RemoveFeature/{id}")]
         public async Task<IActionResult> RemoveFeature(int id)
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.DeleteAsync($"https://localhost:7160/api/Features/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "AdminFeature", new { area = "Admin" });
             }
             return View();
         }
 
         [HttpGet]
+        [Route("UpdateFeature/{id}")]
         public async Task<IActionResult> UpdateFeature(int id)
         {
             var client = _httpClientFactory.CreateClient();
@@ -76,6 +82,7 @@ namespace CarBook.WebUI.Controllers
 
 
         [HttpPost]
+        [Route("UpdateFeature/{id}")]
         public async Task<IActionResult> UpdateFeature(UpdateFeatureDto updateFeatureDto)
         {
             var client = _httpClientFactory.CreateClient();
@@ -84,7 +91,7 @@ namespace CarBook.WebUI.Controllers
             var responseMessage = await client.PutAsync("https://localhost:7160/api/Features", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "AdminFeature", new { area = "Admin" });
             }
             return View();
         }
