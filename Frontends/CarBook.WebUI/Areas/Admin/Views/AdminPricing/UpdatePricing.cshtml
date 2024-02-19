@@ -1,0 +1,35 @@
+﻿@model UpdatePricingDto
+
+@{
+    ViewData["Title"] = "UpdatePricing";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Marka Güncelleme Sayfası</h4>
+                        <p class="card-subtitle mb-4">Pricing'ı girdikten sonra kaydet butonuna tıklayarak güncelleme işlemini tamamlayabilirsiniz..</p>
+
+                        <form method="post">
+                            <input type="hidden" asp-for="PricingID" />
+                            <div class="form-group">
+                                <label for="exampleInputModel">Ödeme Periyot Başlığı</label>
+                                <input asp-for="Name" type="text" class="form-control" id="exampleInputModel" placeholder="İsim girişi yapınız..." />
+                            </div>
+
+                            <button type="submit" class="btn btn-success waves-effect waves-light">Pricing'ı Kaydet</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
