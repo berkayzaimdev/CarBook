@@ -89,7 +89,7 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
                 int avgRentPriceForDailyRandom = random.Next(0, 101);
                 var jsonData6 = await responseMessage6.Content.ReadAsStringAsync();
                 var values6 = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData6);
-                ViewBag.avgRentPriceForDaily = values6.avgPriceForDaily.ToString("0.00");
+                ViewBag.avgRentPriceForDaily = values6.avgRentPriceForDaily.ToString("0.00");
                 ViewBag.avgRentPriceForDailyRandom = avgRentPriceForDailyRandom;
             }
             #endregion
@@ -101,7 +101,7 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
                 int avgRentPriceForWeeklyRandom = random.Next(0, 101);
                 var jsonData7 = await responseMessage7.Content.ReadAsStringAsync();
                 var values7 = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData7);
-                ViewBag.avgRentPriceForWeekly = values7.avgRentPriceForWeekl.ToString("0.00");
+                ViewBag.avgRentPriceForWeekly = values7.avgRentPriceForWeekly.ToString("0.00");
                 ViewBag.avgRentPriceForWeeklyRandom = avgRentPriceForWeeklyRandom;
             }
             #endregion

@@ -13,8 +13,8 @@ namespace CarBook.Dto.StatisticsDtos
         public int authorCount { get; set; }
         public int blogCount { get; set; }
         public int brandCount { get; set; }
-        public decimal avgPriceForDaily { get; set; }
-        public decimal avgRentPriceForWeekl { get; set; }
+        public decimal avgRentPriceForDaily { get; set; }
+        public decimal avgRentPriceForWeekly { get; set; }
         public decimal avgRentPriceForMonthly { get; set; }
         public int carCountByTransmissionIsAuto { get; set; }
         public int carCountByKmSmallerThan1000 { get; set; }
