@@ -1,0 +1,59 @@
+﻿@model List<ResultAllBlogsWithAuthorDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Bloglar</h4>
+                        <p class="card-subtitle mb-4">
+                            Ana sayfadaki blog alanında bulunan bilgileri bu sayfadan düzenleyebilirsiniz. Yeni blog ekleme için yazar olarak giriş yapınız. 
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Başlık</th>
+                                        <th>Açıklama</th>
+                                        <th>Yazar</th>
+                                        <th>Kategori</th>
+                                        <th>Tarih</th>
+                                        <th>Kaldır</th>
+                                        <th>Blogu Aç</th>
+                                        <th>Yorumlar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <th scope="row">@count</th>
+                                            <th>@item.Title</th>
+                                            <th>@item.Description</th>
+                                            <th>@item.AuthorName</th>
+                                            <th>@item.CategoryID</th>
+                                            <th>@item.CreatedDate</th>
+                                            <th><a href="/Admin/AdminBlog/RemoveBlog/@item.BlogID" class="btn btn-outline-danger">Kaldır</a></th>
+                                            <th><a href="/Blog/BlogDetail/@item.BlogID" class="btn btn-outline-danger">Blogu Aç</a></th>
+                                            <th><a href="/Admin/AdminBlog/CommentListByBlogId/@item.BlogID" class="btn btn-outline-success">Yorumları Gör</a></th>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
