@@ -19,7 +19,7 @@ namespace CarBook.Application.Interfaces.StatisticsInterfaces
         Task<int> GetCarCountByTransmissionIsAutoAsync();
         Task<string> GetBrandNameByMaxCarAsync();
         Task<string> GetBlogTitleByMaxBlogCommentAsync();
-        Task<int> GetCarCountByKmSmallerThan1000sync();
+        Task<int> GetCarCountByKmSmallerThan1000Async();
         Task<int> GetCarCountByFuelGasolineOrDieselAsync();
         Task<int> GetCarCountByFuelElectricAsync();
         Task<string> GetCarBrandAndModelByRentPriceDailyMaxAsync();

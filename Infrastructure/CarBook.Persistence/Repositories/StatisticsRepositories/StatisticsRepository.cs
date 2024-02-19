@@ -95,7 +95,7 @@ namespace CarBook.Persistence.Repositories.StatisticsRepositories
             return value;
         }
 
-        public async Task<int> GetCarCountByKmSmallerThan1000sync()
+        public async Task<int> GetCarCountByKmSmallerThan1000Async()
         {
             var value = await _context.Cars.Where(x => x.Km < 1000).CountAsync();
             return value;
