@@ -24,7 +24,6 @@ namespace CarBook.Application.Features.Mediator.Handlers.CarFeatureHandlers
             var values = await _repository.GetCarFeaturesByCarIdAsync(request.Id);
             return values.Select(value => new GetCarFeatureByCarIdQueryResult
             {
-                CarID = value.CarID,
                 CarFeatureID = value.CarFeatureID,
                 FeatureID = value.CarFeatureID,
                 Name = value.Feature.Name,

@@ -1,4 +1,5 @@
-﻿using CarBook.Application.Features.Mediator.Queries.CarFeatureQueries;
+﻿using CarBook.Application.Features.Mediator.Commands.CarFeatureCommands;
+using CarBook.Application.Features.Mediator.Queries.CarFeatureQueries;
 using CarBook.Application.Features.Mediator.Queries.CarPricingQueries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -22,6 +23,20 @@ namespace CarBook.WebApi.Controllers
         {
             var values = await _mediator.Send(new GetCarFeatureByCarIdQuery(id));
             return Ok(values);
+        }
+
+        [HttpGet("ChangeCarFeatureAvailableToFalse")]
+        public async Task<IActionResult> ChangeCarFeatureAvailableToFalse(int id)
+        {
+            await _mediator.Send(new ChangeCarFeatureAvailableToFalseCommand(id));
+            return Ok("Güncelleme yapıldı.");
+        }
+
+        [HttpGet("ChangeCarFeatureAvailableToTrue")]
+        public async Task<IActionResult> ChangeCarFeatureAvailableToTrue(int id)
+        {
+            await _mediator.Send(new ChangeCarFeatureAvailableToTrueCommand(id));
+            return Ok("Güncelleme yapıldı.");
         }
     }
 }
