@@ -22,12 +22,12 @@ namespace CarBook.Application.Features.Mediator.Handlers.CarFeatureHandlers
         public async Task<List<GetCarFeatureByCarIdQueryResult>> Handle(GetCarFeatureByCarIdQuery request, CancellationToken cancellationToken)
         {
             var values = await _repository.GetCarFeaturesByCarIdAsync(request.Id);
-            return values.Select(value => new GetCarFeatureByCarIdQueryResult
+            return values.Select(x => new GetCarFeatureByCarIdQueryResult
             {
-                CarFeatureID = value.CarFeatureID,
-                FeatureID = value.CarFeatureID,
-                Name = value.Feature.Name,
-                Available = value.Available
+                Available = x.Available,
+                CarFeatureID = x.CarFeatureID,
+                FeatureID = x.FeatureID,
+                Name = x.Feature.Name
             }).ToList();
         }
     }
