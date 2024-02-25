@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Mediator\Commands\StatisticsCommands\**" />
+    <EmbeddedResource Remove="Features\Mediator\Commands\StatisticsCommands\**" />
+    <None Remove="Features\Mediator\Commands\StatisticsCommands\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.9.0" />
     <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
@@ -20,7 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Mediator\Commands\StatisticsCommands\" />
     <Folder Include="Features\RepositoryPattern\CommentRepositories\" />
   </ItemGroup>
 
