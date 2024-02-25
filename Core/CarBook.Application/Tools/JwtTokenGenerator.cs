@@ -44,7 +44,7 @@ namespace CarBook.Application.Tools
 				signingCredentials: signingCredentials
 				);
 			JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
-			return new TokenResponseDto(tokenHandler.WriteToken(token), expireDate)
+			return new TokenResponseDto(tokenHandler.WriteToken(token), expireDate);
 		}
 	}
 }
