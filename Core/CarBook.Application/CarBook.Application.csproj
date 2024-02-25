@@ -20,7 +20,6 @@
   <ItemGroup>
     <Folder Include="Features\Mediator\Commands\StatisticsCommands\" />
     <Folder Include="Features\RepositoryPattern\CommentRepositories\" />
-    <Folder Include="Dtos\" />
   </ItemGroup>
 
 </Project>
